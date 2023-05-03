@@ -10,6 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model perfis {
+  id         Int           @id @default(autoincrement())
+  perfil     String
+  usuario    usuarios[]    @relation("perfil")
+  comentario comentarios[] @relation("comentario")
+}
+
 model usuarios {
   id        Int    @id @default(autoincrement())
   senha     Int
@@ -17,29 +24,22 @@ model usuarios {
   perfil    perfis @relation("perfil", fields: [perfil_id], references: [id])
 }
 
-model perfis {
-  id      Int        @id @default(autoincrement())
-  perfil  String
-  usuario usuarios[] @relation("perfil")
-  comentario comentarios[] @relation("comentario")
-}
-
 model equipamentos {
-  id          Int      @id @default(autoincrement())
+  id          Int           @id @default(autoincrement())
   equipamento String
   imagem      String
   descricao   String
   ativo       Boolean
-  data        DateTime @default(now())
-  comentario comentarios[] @relation("equipamento")
+  data        DateTime      @default(now())
+  comentario  comentarios[] @relation("equipamento")
 }
 
 model comentarios {
-  id             Int      @id @default(autoincrement())
+  id             Int          @id @default(autoincrement())
   comentario     String
   equipamento_id Int
   perfil_id      Int
-  data           DateTime @default(now())
-  perfil perfis @relation("comentario", fields: [perfil_id], references: [id])
-  equipamento equipamentos @relation("equipamento", fields: [equipamento_id], references: [id])
+  data           DateTime     @default(now())
+  perfil         perfis       @relation("comentario", fields: [perfil_id], references: [id])
+  equipamento    equipamentos @relation("equipamento", fields: [equipamento_id], references: [id])
 }
