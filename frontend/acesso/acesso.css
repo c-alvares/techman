@@ -1,0 +1,14 @@
+#painelDeSenha {
+    width: 420px;
+    background-color: #FFFFFF;
+}
+
+button {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%
+}
+
+#teclaEnter {
+    width: 40px;
+}
