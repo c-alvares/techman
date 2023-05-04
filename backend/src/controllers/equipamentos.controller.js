@@ -1,6 +1,4 @@
 const { PrismaClient } = require("@prisma/client");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 require("dotenv").config();
 
@@ -13,14 +11,8 @@ const read = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  let { equipamento, imagem, descricao, ativo } = req.body;
   let equips = await prisma.equipamentos.create({
-    data: {
-      equipamento: equipamento,
-      imagem: imagem,
-      descricao: descricao,
-      ativo: ativo,
-    },
+    data: req.body
   });
   res.status(201).json(equips);
 };
