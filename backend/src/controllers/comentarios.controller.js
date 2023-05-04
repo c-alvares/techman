@@ -1,8 +1,4 @@
 const { PrismaClient } = require("@prisma/client");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-
-require("dotenv").config();
 
 const prisma = new PrismaClient();
 
@@ -13,7 +9,15 @@ const read = async (req, res) => {
 
   res.status(200).json(coments).end();
 };
-	
+
+const create = async (req, res) => {
+  let coments = await prisma.comentarios.create({
+    data:req.body
+  });
+  res.status(200).json(coments).end();
+}
+
 module.exports = {
   read,
+  create,
 };
