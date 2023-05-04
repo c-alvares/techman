@@ -5,11 +5,13 @@ require("dotenv").config();
 
 const prisma = new PrismaClient();
 
+
 const read = async (req, res) => {
 	let users = await prisma.usuarios.findMany();
 
 	res.status(200).json(users).end();
 };
+
 
 const login = async (req, res) => {
 	const user = await prisma.usuarios.findMany({
