@@ -1,11 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-
-require("dotenv").config();
 
 const prisma = new PrismaClient();
-
 
 
 const read = async (req, res) => {
@@ -16,4 +11,4 @@ const read = async (req, res) => {
 	
 module.exports = {
   read,
-};
+}
