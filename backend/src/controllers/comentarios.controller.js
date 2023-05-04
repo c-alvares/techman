@@ -5,10 +5,13 @@ const prisma = new PrismaClient();
 
 
 const read = async (req, res) => {
-  let coments = await prisma.comentarios.findMany();
+  let coments = await prisma.comentarios.findMany({
+    orderBy: { data: 'desc' }
+  });
 
   res.status(200).json(coments).end();
 };
+
 
 const create = async (req, res) => {
   let coments = await prisma.comentarios.create({
@@ -19,5 +22,7 @@ const create = async (req, res) => {
 
 module.exports = {
   read,
-  create,
+  create
 };
+
+// https://www.prisma.io/docs/concepts/components/prisma-client/filtering-and-sorting
