@@ -28,6 +28,7 @@ const readOne = async (req, res) => {
           perfil_id: true,
           data: true,
         },
+        orderBy: { data: 'desc' }
       },
     },
   });
