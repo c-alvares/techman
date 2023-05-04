@@ -26,7 +26,7 @@ const readOne = async (req, res) => {
           comentario: true,
           perfil_id: true,
           data: true,
-        }
+        },
       },
     },
   });
@@ -40,8 +40,19 @@ const create = async (req, res) => {
   res.status(201).json(equips);
 };
 
+const remove = async (req, res) => {
+  await prisma.equipamentos.delete({
+    where: {
+      id: Number(req.params.id),
+    },
+  });
+
+  res.status(200).json("Equipamento deletado").end();
+};
+
 module.exports = {
   read,
   readOne,
   create,
+  remove,
 };

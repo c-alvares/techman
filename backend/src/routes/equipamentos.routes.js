@@ -13,7 +13,6 @@ router.delete('*', Middle.acessValidator);
 router.post('/cadastrarequipamento', equipamentos.create);
 router.get('/equipamentos', equipamentos.read);
 router.get('/equipamento/:id', equipamentos.readOne);
-// router.put('/atualizardados/:id', equipamentos.update);
-// router.delete('/excluirusuario/:id', equipamentos.remove);
+router.delete('/excluirequipamento/:id', equipamentos.remove);
 
 module.exports = router;
