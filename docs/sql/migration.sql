@@ -9,7 +9,7 @@ CREATE TABLE `perfis` (
 -- CreateTable
 CREATE TABLE `usuarios` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `senha` INTEGER NOT NULL,
+    `senha` VARCHAR(191) NOT NULL,
     `perfil_id` INTEGER NOT NULL,
 
     PRIMARY KEY (`id`)

@@ -19,7 +19,7 @@ model perfis {
 
 model usuarios {
   id        Int    @id @default(autoincrement())
-  senha     Int
+  senha     String
   perfil_id Int
   perfil    perfis @relation("perfil", fields: [perfil_id], references: [id])
 }
