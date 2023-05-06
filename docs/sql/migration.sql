@@ -47,28 +47,32 @@ ALTER TABLE `comentarios` ADD CONSTRAINT `comentarios_perfil_id_fkey` FOREIGN KE
 -- AddForeignKey
 ALTER TABLE `comentarios` ADD CONSTRAINT `comentarios_equipamento_id_fkey` FOREIGN KEY (`equipamento_id`) REFERENCES `equipamentos`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
-LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/perfis.csv'
+-- LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/perfis.csv'
+LOAD DATA INFILE 'C:/Users/oryc1/Desktop/techman/docs/dados/perfis.csv'
 INTO TABLE perfis
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/usuarios.csv'
+-- LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/usuarios.csv'
+LOAD DATA INFILE 'C:/Users/oryc1/Desktop/techman/docs/dados/usuarios.csv'
 INTO TABLE usuarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/equipamentos.csv'
+-- LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/equipamentos.csv'
+LOAD DATA INFILE 'C:/Users/oryc1/Desktop/techman/docs/dados/equipamentos.csv'
 INTO TABLE equipamentos
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/comentarios.csv'
+-- LOAD DATA INFILE 'C:/Users/Desenvolvimento/Desktop/techman/docs/dados/comentarios.csv'
+LOAD DATA INFILE 'C:/Users/oryc1/Desktop/techman/docs/dados/comentarios.csv'
 INTO TABLE comentarios
 FIELDS TERMINATED BY ';'
 ENCLOSED BY '"'
