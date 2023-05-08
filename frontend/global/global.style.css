@@ -4,3 +4,8 @@
     box-sizing: border-box;
     background-color: #cce2e2;
 }
+
+.model {
+    display: none;
+    visibility: hidden;
+}
