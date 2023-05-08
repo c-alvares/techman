@@ -18,9 +18,8 @@ fetch("http://localhost:3000/equipamentos", options)
   })
   .catch((err) => console.error(err));
 
-// id
-// equipamento
-// imagem
-// descricao
-// ativo
-// data
+const logout = () => {
+  localStorage.removeItem('id');
+  localStorage.removeItem('token');
+  window.location.href = '../acesso/acesso.html';
+}
