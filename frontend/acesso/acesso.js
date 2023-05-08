@@ -50,8 +50,11 @@ const acessarSistema = () => {
       }
     })
     .then((response) => {
-        if ( response.id !== 2) window.location.href = '../home/home.html';
-        else window.location.href = '../admin/admin.html';
+        if ( response.perfil_id !== 2) window.location.href = '../home/home.html';
+        else {
+          window.location.href = '../admin/admin.html';
+          localStorage.setItem('dados', JSON.stringify(response))
+        }
     })
     .catch((err) => console.error(err));
 };
