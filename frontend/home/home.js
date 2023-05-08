@@ -1,0 +1,27 @@
+const container = document.querySelector('.container');
+
+
+    const options = {method: 'GET'};
+
+    fetch('http://localhost:3000/equipamentos', options)
+      .then(response => response.json())
+      .then(resp => {
+        resp.forEach(card => {
+            let cardEquipamento = container.cloneNode(true)
+
+            cardEquipamento.classList.remove('model')
+            // cardEquipamento.querySelector('#imagem').src = card.imagem
+            cardEquipamento.querySelector('h3').innerHTML = card.imagem
+            cardEquipamento.querySelector('p').innerHTML = card.descricao
+            
+            container.appendChild(cardEquipamento)
+        })
+      })
+      .catch(err => console.error(err));
+
+// id
+// equipamento
+// imagem
+// descricao
+// ativo
+// data
