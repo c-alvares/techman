@@ -13,6 +13,15 @@ const read = async (req, res) => {
 };
 
 
+const readOne = async (req, res) => {
+  let coments = await prisma.comentarios.findMany({
+    where: { equipamento_id: Number(req.params.equipamento_id) },
+    orderBy: { data: 'desc' }
+  });
+
+  res.status(200).json(coments).end();
+};
+
 const create = async (req, res) => {
   let coments = await prisma.comentarios.create({
     data:req.body
@@ -22,6 +31,7 @@ const create = async (req, res) => {
 
 module.exports = {
   read,
+  readOne,
   create
 };
 
