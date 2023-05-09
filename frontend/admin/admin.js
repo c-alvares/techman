@@ -15,9 +15,7 @@ fetch("http://localhost:3000/equipamentos", options)
         cardEquipamento.querySelector("h3").innerHTML = card.imagem;
         cardEquipamento.querySelector("p").innerHTML = card.descricao;
         cardEquipamento.innerHTML += `<img src="../../docs/assets/comentario.png" onclick="verComentarios(${card.id})">`;
-        if ( perfilAdministrador === 2 ) {
-          cardEquipamento.innerHTML += `<img src="../../docs/assets/deletar.png" onclick="excluir(${card.id})">`;
-        }
+        cardEquipamento.innerHTML += `<img src="../../docs/assets/deletar.png" onclick="openModal(${card.id})">`;
         cardEquipamento.innerHTML += `<hr>`;
         document.querySelector("main").appendChild(cardEquipamento);
         // appendar sempre a um elemento pai da variável definida(<main> <div>)
@@ -27,26 +25,7 @@ fetch("http://localhost:3000/equipamentos", options)
   .catch((err) => console.error(err));
 
 
-const excluir = (params) => {
-    const options = {
-        method: 'DELETE',
-        headers: {
-          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('dados')).token
-        }
-      };
-      
-      fetch('http://localhost:3000/excluirequipamento/' + params, options)
-      .then(response => response.status)
-      .then(resp => { if(resp == 200) {
-              alert("Publicação exclúida com sucesso")
-            //   mudar de alert para modal
-              window.location.reload()
-          }else {
-              alert("Falha ao excluir publicação")
-          }
-      })
-      .catch(err => console.error(err));
-}
+
 
 // id
 // equipamento
