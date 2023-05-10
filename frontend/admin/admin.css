@@ -82,6 +82,7 @@ body {
     visibility: hidden;
   }
 
-  .modalC input {
-    width: 100px
+  .modalCC input {
+    /* border: 1px solid; */
+    width: 407px
   }
