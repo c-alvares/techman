@@ -1,5 +1,10 @@
 const container = document.querySelector(".container");
 
+const nomeInput = document.querySelector("#nomeInput"); 
+const imagemInput = document.querySelector("#imagemInput");
+const descricaoInput = document.querySelector("#descricaoInput");
+const statusInput = document.querySelector("#statusInput");
+
 const perfilAdministrador = JSON.parse(localStorage.getItem('dados')).perfil_id
 
 
@@ -23,6 +28,27 @@ fetch("http://localhost:3000/equipamentos", options)
     });
   })
   .catch((err) => console.error(err));
+
+const cadastrarNovoEquipamento = () => {
+  const send = {
+  equipamento: nomeInput.value,
+  imagem: imagemInput.value,
+  descricao: descricaoInput.value,
+  ativo: statusInput.value
+  }
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('dados')).token
+    },
+  };
+  
+  fetch('http://localhost:3000/cadastrarequipamento', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+}
 
 
 

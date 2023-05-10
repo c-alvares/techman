@@ -26,6 +26,17 @@
         </div>
     </main>
 
+    <section class="modalEquipamento hidden0" id="cadastroEquipamento">
+        <h3>Cadastro de equipamento</h3>
+        <button class="btn-close0">⨉</button>
+        <input type="text" placeholder="Nome" id="nomeInput">
+        <input type="text" placeholder="Endereço da imagem" id="imagemInput">
+        <input type="text" placeholder="Descrição" id="descricaoInput">
+        <input type="checkbox" name="status" id="statusInput">
+        <label for="status">Ativo</label>
+        <button class="cadastrarBtn">Cadastrar</button>
+    </section>
+
     <section class="modal1 hidden1" id="secao">
         <button class="btn-close1">⨉</button>
         <h3>Comentários</h3>
@@ -40,16 +51,14 @@
     <div class="overlay1 hidden1"></div>
 
     <section class="modal2 hidden2" id="secao2">
+        <h3>Cadastro de comentário</h3>
         <button class="btn-close2">⨉</button>
-        <h3>Comentários</h3>
-        <div class="comentario modalC">
+        <div class="comentario modalCC">
             <h5>Comentário</h5>
-            <input></input>
+            <input class="inputComentario"></input>
         </div>
-        <button class="btn btn-cadastrar">Cadsatrar</button>
+        <button class="btn btn-cadastrar">Cadastrar</button>
     </section>
-
-    <div class="overlay2 hidden2"></div>
 
     <section class="modal hidden">
         <button class="btn-close">⨉</button>
