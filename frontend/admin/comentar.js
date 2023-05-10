@@ -1,8 +1,11 @@
 const modal1 = document.querySelector(".modal1");
+const modal2 = document.querySelector(".modal2");
 const overlay1 = document.querySelector(".overlay1");
+const overlay2 = document.querySelector(".overlay2");
 const closeModalBtn1 = document.querySelector(".btn-close1");
-const commentBtn = document.querySelector(".btn-comment");
 const comentarios = document.querySelector(".comentario");
+const commentBtn = document.querySelector(".btn-comment");
+const cadastrarBtn = document.querySelector(".btn-cadastrar")
 const inputComentario = document.querySelector(".inputComentario");
 
 
@@ -44,24 +47,32 @@ const verComentarios = (params) => {
       })
       .catch(err => console.error(err));    
 
-    commentBtn.addEventListener("click", () => {
+      commentBtn.addEventListener("click", () => {
+        modal2.classList.remove("hidden2");
+        overlay2.classList.remove("hidden2");
+        modal1.classList.add("hidden1");
+        overlay1.classList.remove("hidden1");        
+      })
+
+      cadastrarBtn.addEventListener("click", () => {
 
         let inputBody = {
             comentario: inputComentario.value,
             equipamento_id: params,
             perfil_id: JSON.parse(localStorage.getItem('dados')).perfil_id
-
         }
+
         const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: inputBody
-          };
-          
-          fetch('http://localhost:3000/comentar', options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .catch(err => console.error(err));        
+            
+        };
+        options.body = JSON.stringify(inputBody);
+        
+        fetch('http://localhost:3000/comentar', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));        
     })
 }
 
