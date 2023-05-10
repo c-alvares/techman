@@ -41,5 +41,5 @@ model comentarios {
   perfil_id      Int
   data           DateTime     @default(now())
   perfil         perfis       @relation("comentario", fields: [perfil_id], references: [id])
-  equipamento    equipamentos @relation("equipamento", fields: [equipamento_id], references: [id])
+  equipamento    equipamentos @relation("equipamento", fields: [equipamento_id], references: [id], onDelete: Cascade)
 }
