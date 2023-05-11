@@ -1,9 +1,15 @@
 const container = document.querySelector(".container");
 
+const modalCadastro = document.querySelector(".modalCadastro");
+const overlay0 = document.querySelector(".overlay0");
+
+const closeModalBtn0 = document.querySelector(".btn-close0")
+
 const nomeInput = document.querySelector("#nomeInput"); 
 const imagemInput = document.querySelector("#imagemInput");
 const descricaoInput = document.querySelector("#descricaoInput");
-const statusInput = document.querySelector("#statusInput");
+const checkbox = document.querySelector("input[type=checkbox]");
+// const isChecked = checkbox.checked;
 
 const perfilAdministrador = JSON.parse(localStorage.getItem('dados')).perfil_id
 
@@ -29,13 +35,38 @@ fetch("http://localhost:3000/equipamentos", options)
   })
   .catch((err) => console.error(err));
 
+// open modal function
+const popupCadastro = () => {
+  modalCadastro.classList.remove("hidden0");
+  overlay0.classList.remove("hidden0");
+}
+
+// close modal function
+const closeModal0 = () => {
+  modalCadastro.classList.add("hidden0");
+  overlay0.classList.add("hidden0");
+}
+
+// close the modal when the close button and overlay is clicked
+closeModalBtn0.addEventListener("click", closeModal0);
+overlay0.addEventListener("click", closeModal0);
+
+// close modal when the Esc key is pressed
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !modalCadastro.classList.contains("hidden0")) {
+    closeModal0();
+  }
+});
+
 const cadastrarNovoEquipamento = () => {
+
   const send = {
   equipamento: nomeInput.value,
   imagem: imagemInput.value,
   descricao: descricaoInput.value,
-  ativo: statusInput.value
-  }
+  ativo: checkbox.checked
+  };
+
   const options = {
     method: 'POST',
     headers: {
@@ -43,19 +74,13 @@ const cadastrarNovoEquipamento = () => {
       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('dados')).token
     },
   };
+  options.body = JSON.stringify(send);
   
   fetch('http://localhost:3000/cadastrarequipamento', options)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+      console.log(response)
+      window.location.reload();
+    })
     .catch(err => console.error(err));
 }
-
-
-
-
-// id
-// equipamento
-// imagem
-// descricao
-// ativo
-// data

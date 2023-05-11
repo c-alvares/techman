@@ -11,8 +11,8 @@
 <body>
     <header>
         <img src="../../docs/assets/techman.png" alt="">
-        <p onclick="">Novo equipamento</p>
-        <img onclick="logout()" src="../../docs/assets/logout_sair.png" alt="">
+        <p id="novoEquipamento" onclick="popupCadastro()">Novo equipamento</p>
+        <img id="logoff" onclick="logout()" src="../../docs/assets/logout_sair.png" alt="">
     </header>
     <main>
         <div class="container model">
@@ -26,16 +26,18 @@
         </div>
     </main>
 
-    <section class="modalEquipamento hidden0" id="cadastroEquipamento">
-        <h3>Cadastro de equipamento</h3>
+    <section class="modalCadastro hidden0" id="cadastroEquipamento">
         <button class="btn-close0">⨉</button>
+        <h3>Cadastro de equipamento</h3>
         <input type="text" placeholder="Nome" id="nomeInput">
         <input type="text" placeholder="Endereço da imagem" id="imagemInput">
         <input type="text" placeholder="Descrição" id="descricaoInput">
         <input type="checkbox" name="status" id="statusInput">
         <label for="status">Ativo</label>
-        <button class="cadastrarBtn">Cadastrar</button>
+        <button class="btn cadastrarBtn" onclick="cadastrarNovoEquipamento()">Cadastrar</button>
     </section>
+
+    <div class="overlay0 hidden0"></div>
 
     <section class="modal1 hidden1" id="secao">
         <button class="btn-close1">⨉</button>

@@ -2,6 +2,11 @@
     width: 200px;
 }
 
+
+#novoEquipamento, #logoff {
+  cursor: pointer;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -13,7 +18,7 @@ body {
     background-color: #b3e6f4;
   }
   
-  .modal, .modal1, .modal2 {
+  .modal, .modal1, .modal2, .modalCadastro {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,14 +58,14 @@ body {
   }
 
   
-  .btn-close, .btn-close1, .btn-close2 {
+  .btn-close, .btn-close1, .btn-close2, .btn-close0 {
     transform: translate(10px, -20px);
     padding: 0.5rem 0.7rem;
     background: #eee;
     border-radius: 50%;
   }
    
-  .overlay, .overlay1, .overlay2 {
+  .overlay, .overlay1, .overlay0 {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -73,7 +78,7 @@ body {
     z-index: 1;
   }
   
-  .hidden, .hidden1, .hidden2 {
+  .hidden, .hidden1, .hidden2, .hidden0{
     display: none;
   }
 
@@ -82,7 +87,7 @@ body {
     visibility: hidden;
   }
 
-  .modalCC input {
+  .modalCC input, .modalEquipamento input {
     /* border: 1px solid; */
     width: 407px
   }
