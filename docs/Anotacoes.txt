@@ -1,0 +1,11 @@
+AddSeconds(CurrDateTime(),5)
+
+var containerEle = document.querySelector("#" + $parameters.WidgetId);
+if(containerEle.value.length >= $parameters.Quantity)
+{
+	containerEle.setAttribute("onkeypress", "return false");
+} else {
+	if(containerEle.hasAttribute("onkeypress")) {
+		containerEle.setAttribute("onkeypress", "return true")
+	}
+}
