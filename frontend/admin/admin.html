@@ -29,12 +29,18 @@
     <section class="modalCadastro hidden0" id="cadastroEquipamento">
         <button class="btn-close0">⨉</button>
         <h3>Cadastro de equipamento</h3>
-        <input type="text" placeholder="Nome" id="nomeInput">
-        <input type="text" placeholder="Endereço da imagem" id="imagemInput">
-        <input type="text" placeholder="Descrição" id="descricaoInput">
-        <input type="checkbox" name="status" id="statusInput">
+        <input type="text" placeholder="Nome" id="nomeInput" required>
+        <input type="text" placeholder="Endereço da imagem" id="imagemInput" required> 
+        <input type="text" placeholder="Descrição" id="descricaoInput" required>
+        <input type="checkbox" name="status" id="statusInput" required>
         <label for="status">Ativo</label>
-        <button class="btn cadastrarBtn" onclick="cadastrarNovoEquipamento()">Cadastrar</button>
+        <button class="btn cadastrarBtn">Cadastrar</button>
+    </section>
+
+    <section class="modalSucesso hiddenS" id="cadastroEfetivado"> 
+        <button class="btn-closeS">⨉</button>
+        <h3>Cadastro de equipamento</h3>
+        <p>Sucesso! Equipamento cadastrado. </p>
     </section>
 
     <div class="overlay0 hidden0"></div>
@@ -59,8 +65,14 @@
             <h5>Comentário</h5>
             <input class="inputComentario"></input>
         </div>
-        <button class="btn btn-cadastrar">Cadastrar</button>
+        <button disabled class="btn btn-cadastrar">Cadastrar</button>
     </section>
+
+    <section class="modalComentS hiddenCS" id="comentarioEfetivado"> 
+        <button class="btn-closeCS">⨉</button>
+        <h3>Cadastro de comentário</h3>
+        <p>Sucesso! Comentário cadastrado para o equipamento. </p>
+    </section>    
 
     <section class="modal hidden">
         <button class="btn-close">⨉</button>

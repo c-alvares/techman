@@ -18,7 +18,7 @@ body {
     background-color: #b3e6f4;
   }
   
-  .modal, .modal1, .modal2, .modalCadastro {
+  .modal, .modal1, .modal2, .modalCadastro, .modalSucesso, .modalComentS {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +58,7 @@ body {
   }
 
   
-  .btn-close, .btn-close1, .btn-close2, .btn-close0 {
+  .btn-close, .btn-close1, .btn-close2, .btn-close0, .btn-closeS, .btn-closeCS {
     transform: translate(10px, -20px);
     padding: 0.5rem 0.7rem;
     background: #eee;
@@ -78,7 +78,7 @@ body {
     z-index: 1;
   }
   
-  .hidden, .hidden1, .hidden2, .hidden0{
+  .hidden, .hidden1, .hidden2, .hidden0, .hiddenS, .hiddenCS{
     display: none;
   }
 

@@ -1,19 +1,23 @@
 const container = document.querySelector(".container");
 
 const modalCadastro = document.querySelector(".modalCadastro");
+const modalSucesso = document.querySelector(".modalSucesso");
+
 const overlay0 = document.querySelector(".overlay0");
 
-const closeModalBtn0 = document.querySelector(".btn-close0")
+const cadastrarEquipamentoBtn = document.querySelector(".cadastrarBtn");
+
+const closeModalBtn0 = document.querySelector(".btn-close0");
+const closeModalBtnS = document.querySelector(".btn-closeS");
 
 const nomeInput = document.querySelector("#nomeInput"); 
 const imagemInput = document.querySelector("#imagemInput");
 const descricaoInput = document.querySelector("#descricaoInput");
 const checkbox = document.querySelector("input[type=checkbox]");
-// const isChecked = checkbox.checked;
 
 const perfilAdministrador = JSON.parse(localStorage.getItem('dados')).perfil_id
 
-
+// função para listar os equipamentos
 const options = { method: "GET" };
 fetch("http://localhost:3000/equipamentos", options)
   .then((response) => response.json())
@@ -47,6 +51,13 @@ const closeModal0 = () => {
   overlay0.classList.add("hidden0");
 }
 
+// close modal function
+const closeModalS = () => {
+  modalSucesso.classList.add("hidden0");
+  overlay0.classList.add("hidden0");
+  window.location.reload();
+}
+
 // close the modal when the close button and overlay is clicked
 closeModalBtn0.addEventListener("click", closeModal0);
 overlay0.addEventListener("click", closeModal0);
@@ -58,8 +69,8 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// função para cadastrar novo equipamento
 const cadastrarNovoEquipamento = () => {
-
   const send = {
   equipamento: nomeInput.value,
   imagem: imagemInput.value,
@@ -76,11 +87,32 @@ const cadastrarNovoEquipamento = () => {
   };
   options.body = JSON.stringify(send);
   
+
+
   fetch('http://localhost:3000/cadastrarequipamento', options)
     .then(response => response.json())
     .then(response => {
-      console.log(response)
-      window.location.reload();
+      // console.log(response)
+      modalCadastro.classList.add("hidden0")
+      modalSucesso.classList.remove("hiddenS")
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
     })
     .catch(err => console.error(err));
 }
+
+// função para habilitar botão de cadastrar apenas se os campos foram todos preenchidos
+const habilitarCadastrarBtn = () => {
+  if(nomeInput.value && imagemInput.value && descricaoInput.value) {
+    cadastrarEquipamentoBtn.disabled = false;
+  } else cadastrarEquipamentoBtn.disabled = true;
+}
+
+// eventos para verificar se os campos foram preenchidos
+nomeInput.addEventListener("input", habilitarCadastrarBtn);
+imagemInput.addEventListener("input", habilitarCadastrarBtn);
+descricaoInput.addEventListener("input", habilitarCadastrarBtn);
+
+// evento para cadastrar equipamento
+cadastrarEquipamentoBtn.addEventListener("click", cadastrarNovoEquipamento)
